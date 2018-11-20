@@ -9,6 +9,9 @@
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Button Text="insert" x:Name="btnInsert" />
+        <Button Text="list" x:Name="btnList" />
+
     </StackLayout>
 
 </ContentPage>
