@@ -12,7 +12,8 @@ namespace SQLiteSample
         public MainPage()
         {
             InitializeComponent();
-            btnInsert.Clicked += btnInsertclicked;
+            btnInsert1.Clicked += btnInsertclicked1;
+            btnInsert2.Clicked += btnInsertclicked2;
             btnList.Clicked += btnListClicked;
 
         }
@@ -23,7 +24,8 @@ namespace SQLiteSample
 
             List<MoneyItem> itemList;
 
-            itemList = await db.GetItemsNotDoneAsync();
+            //            itemList = await db.GetItemsNotDoneAsync();
+            itemList = await db.GetItemsAsync();
 
             int size = itemList.Count;
 
@@ -31,10 +33,17 @@ namespace SQLiteSample
 
         }
 
-        private void btnInsertclicked(object sender, EventArgs e)
+        private void btnInsertclicked1(object sender, EventArgs e)
         {
             var db = MoneyItemDatabase.getDatabase();
-            MoneyItem m = new MoneyItem() { ID = 10, Name = "HELLO" };
+            MoneyItem m = new MoneyItem() { ID = 10, Name = "HELLO"　, Done=true };
+            db.SaveItemAsync(m);
+            DisplayAlert("SQLite", "追加されたよ", "OK");
+        }
+        private void btnInsertclicked2(object sender, EventArgs e)
+        {
+            var db = MoneyItemDatabase.getDatabase();
+            MoneyItem m = new MoneyItem() { ID = 20, Name = "HELLO", Done = false };
             db.SaveItemAsync(m);
             DisplayAlert("SQLite", "追加されたよ", "OK");
         }

@@ -44,7 +44,7 @@ namespace SQLiteSample
 
         {
 
-            return database.QueryAsync<MoneyItem>("SELECT * FROM [MoneyItem] WHERE [Done] = 0 "
+            return database.QueryAsync<MoneyItem>("SELECT * FROM [MoneyItem] " + "WHERE [Done] = 0 "
 
                                                   + " order by [Created] desc"
 
